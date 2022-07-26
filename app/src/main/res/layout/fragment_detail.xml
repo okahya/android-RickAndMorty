@@ -8,7 +8,7 @@
 
         <variable
             name="viewModel"
-            type="com.okahya.rickandmorty.scene.detail.DetailViewModel" />
+            type="com.okahya.rickandmorty.scene.ui.detail.DetailViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

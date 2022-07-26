@@ -1,4 +1,4 @@
-package com.okahya.rickandmorty.scene.home
+package com.okahya.rickandmorty.scene.ui.home
 
 import android.os.Bundle
 import android.view.View

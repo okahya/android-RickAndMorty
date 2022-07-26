@@ -1,4 +1,4 @@
-package com.okahya.rickandmorty.scene.home
+package com.okahya.rickandmorty.scene.ui.home
 
 import com.okahya.rickandmorty.base.ui.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel

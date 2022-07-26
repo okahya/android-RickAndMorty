@@ -1,4 +1,4 @@
-package com.okahya.rickandmorty.base
+package com.okahya.rickandmorty.base.ui
 
 import androidx.lifecycle.ViewModel
 

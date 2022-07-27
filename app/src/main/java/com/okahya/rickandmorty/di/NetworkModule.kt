@@ -1,7 +1,7 @@
 package com.okahya.rickandmorty.di
 
 import com.okahya.rickandmorty.BuildConfig
-import com.okahya.rickandmorty.base.network.remote.AppService
+import com.okahya.rickandmorty.base.network.remote.service.AppService
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module

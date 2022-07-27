@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Margin Sizes -->
+    <dimen name="margin_xxl">32dp</dimen>
+    <dimen name="margin_extra_large">24dp</dimen>
+    <dimen name="margin_large">16dp</dimen>
+    <dimen name="margin_medium">12dp</dimen>
+    <dimen name="margin_small">8dp</dimen>
+    <dimen name="margin_extra_small">4dp</dimen>
+
+    <!-- Text Sizes -->
+    <dimen name="text_size_xxl">20sp</dimen>
+    <dimen name="text_size_extra_large">18sp</dimen>
+    <dimen name="text_size_large">16sp</dimen>
+    <dimen name="text_size_medium">14sp</dimen>
+    <dimen name="text_size_small">12sp</dimen>
+    <dimen name="text_size_extra_small">10sp</dimen>
+
+    <!-- Divider -->
+    <dimen name="divider_width">1dp</dimen>
+    <dimen name="divider_height">30sp</dimen>
+
+    <!-- Other sizes -->
+    <dimen name="button_delete_fix_size">40dp</dimen>
+    <dimen name="icon_fix_size">16dp</dimen>
+    <dimen name="radius_small">8dp</dimen>
+    <dimen name="elevation_small">8dp</dimen>
+    <dimen name="elevation_medium">12dp</dimen>
+    <dimen name="no_elevation">0dp</dimen>
+    <dimen name="radius_button">4dp</dimen>
+</resources>

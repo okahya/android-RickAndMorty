@@ -6,9 +6,11 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/component_character.xml" value="0.22" />
         <entry key="app/src/main/res/layout/component_character_detail.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/component_expandable_item_view.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_detail.xml" value="0.15364583333333334" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.1" />
         <entry key="app/src/main/res/layout/item_character.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/item_expandable_item.xml" value="0.1947463768115942" />
         <entry key="app/src/main/res/layout/item_footer.xml" value="0.33" />
         <entry key="app/src/main/res/layout/item_header.xml" value="0.15833333333333333" />
       </map>

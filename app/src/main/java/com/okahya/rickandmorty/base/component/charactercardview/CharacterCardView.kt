@@ -25,12 +25,12 @@ class CharacterCardView @JvmOverloads constructor(
         }
     }
 
-    fun setCharacterName(@StringRes title: Int?) {
-        setText(binding?.textViewName, title)
+    fun setCharacterName(@StringRes name: Int?) {
+        setText(binding?.textViewName, name)
     }
 
-    fun setCharacterName(title: String?) {
-        setText(binding?.textViewName, title)
+    fun setCharacterName(name: String?) {
+        setText(binding?.textViewName, name)
     }
 
     fun setCharacterImage(url: String?) {

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraint_expandable_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:animateLayoutChanges="true"
+        android:backgroundTint="@color/colorHexGray">
+
+        <View
+            android:id="@+id/view_expandable_divider_top"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/colorDimGray"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/text_view_episode"
+            style="@style/Widget.MaterialComponents.TextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="8dp"
+            android:ellipsize="end"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="@string/episode"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/view_expandable_divider_top" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/image_view_expand_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/ic_expand_more"
+            android:background="?attr/selectableItemBackground"
+            app:layout_constraintBottom_toBottomOf="@id/text_view_episode"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/text_view_episode" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_episode"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="4dp"
+            android:layout_marginStart="16dp"
+            android:visibility="gone"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="@+id/image_view_expand_more"
+            app:layout_constraintStart_toStartOf="@+id/text_view_episode"
+            app:layout_constraintTop_toBottomOf="@id/text_view_episode"
+            tools:listitem="@layout/item_expandable_item"/>
+
+        <View
+            android:id="@+id/view_expandable_divider_bottom"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:background="@color/colorDimGray"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="@id/view_expandable_divider_top"
+            app:layout_constraintEnd_toEndOf="@id/view_expandable_divider_top"
+            app:layout_constraintTop_toBottomOf="@id/recycler_view_episode" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

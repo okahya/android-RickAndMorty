@@ -1,12 +1,15 @@
 package com.okahya.rickandmorty.scene.data.model.response
 
+import android.os.Parcelable
 import com.okahya.rickandmorty.scene.data.type.Gender
+import kotlinx.parcelize.Parcelize
 
 data class CharacterListResponse(
     val info: Info,
     val results: List<Character>? = emptyList()
 )
 
+@Parcelize
 data class Character(
     val id: Int,
     val name: String?,
@@ -15,7 +18,7 @@ data class Character(
     val image: String?,
     val gender: Gender?,
     val episode: List<String>?
-)
+): Parcelable
 
 data class Info(
     val count: Int?,

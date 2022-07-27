@@ -4,11 +4,11 @@ import com.squareup.moshi.Json
 
 enum class Gender {
     @Json(name= "Male")
-    MALE,
+    Male,
     @Json(name= "Female")
-    FEMALE,
+    Female,
     @Json(name= "Genderless")
-    GENDERLESS,
+    Genderless,
     @Json(name= "unknown")
-    UNKNOWN
+    Unknown
 }

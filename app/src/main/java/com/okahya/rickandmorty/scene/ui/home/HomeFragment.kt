@@ -86,6 +86,6 @@ class HomeFragment: BaseFragment<FragmentHomeBinding, HomeViewModel>() {
     }
 
     fun onItemClicked(character: Character) {
-        navigateDirections(HomeFragmentDirections.actionHomeFragmentToDetailFragment())
+        navigateDirections(HomeFragmentDirections.actionHomeFragmentToDetailFragment(character))
     }
 }

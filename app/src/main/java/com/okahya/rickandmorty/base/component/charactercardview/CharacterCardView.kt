@@ -1,4 +1,4 @@
-package com.okahya.rickandmorty.base.component
+package com.okahya.rickandmorty.base.component.charactercardview
 
 import android.content.Context
 import android.util.AttributeSet
@@ -6,6 +6,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.StringRes
 import com.okahya.rickandmorty.R
+import com.okahya.rickandmorty.base.component.BaseCardView
 import com.okahya.rickandmorty.databinding.ComponentCharacterBinding
 
 class CharacterCardView @JvmOverloads constructor(

@@ -18,5 +18,11 @@
         android:id="@+id/detailFragment"
         android:name="com.okahya.rickandmorty.scene.ui.detail.DetailFragment"
         android:label=""
-        tools:layout="@layout/fragment_detail" />
+        tools:layout="@layout/fragment_detail">
+        <argument
+            android:name="characterInfo"
+            app:argType="com.okahya.rickandmorty.scene.data.model.response.Character"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </fragment>
 </navigation>

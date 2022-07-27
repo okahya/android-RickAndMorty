@@ -7,12 +7,13 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.okahya.rickandmorty.R
-import com.okahya.rickandmorty.base.network.remote.model.Character
+import com.okahya.rickandmorty.scene.data.model.response.Character
 import com.okahya.rickandmorty.databinding.ItemCharacterBinding
 import com.okahya.rickandmorty.databinding.ItemHeaderBinding
+import com.okahya.rickandmorty.scene.ui.home.uimodel.CharacterUiModel
 
 class CharacterAdapter(private val listener: OnItemClickListener)
-    : PagingDataAdapter<Character, RecyclerView.ViewHolder>(Comparator) {
+    : PagingDataAdapter<Pair<Character, CharacterUiModel>, RecyclerView.ViewHolder>(Comparator) {
 
     override fun getItemViewType(position: Int): Int = when (position) {
         CharacterAdapterState.HEADER.value -> R.layout.item_header
@@ -50,28 +51,30 @@ class CharacterAdapter(private val listener: OnItemClickListener)
                 holder.bind()
             }
             is CharacterViewHolder -> {
-                getItem(position)?.let { holder.bind(it) }
+                getItem(position)?.let { holder.bind(it.second) }
             }
         }
     }
 
-    object Comparator : DiffUtil.ItemCallback<Character>() {
+    object Comparator : DiffUtil.ItemCallback<Pair<Character, CharacterUiModel>>() {
 
-        override fun areItemsTheSame(oldItem: Character, newItem: Character): Boolean {
-            return oldItem.id == newItem.id
+        override fun areItemsTheSame(oldItem: Pair<Character, CharacterUiModel>,
+                                     newItem: Pair<Character, CharacterUiModel>): Boolean {
+            return oldItem.first.id == newItem.first.id
         }
 
-        override fun areContentsTheSame(oldItem: Character, newItem: Character): Boolean {
-            return oldItem == newItem
+        override fun areContentsTheSame(oldItem: Pair<Character, CharacterUiModel>,
+                                        newItem: Pair<Character, CharacterUiModel>): Boolean {
+            return oldItem.first == newItem.first
         }
     }
 
     inner class CharacterViewHolder(private val binding: ItemCharacterBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(characterItem: Character) {
+        fun bind(characterUiModel: CharacterUiModel) {
             with(binding.itemCharacter) {
-                setCharacterName(characterItem.name)
-                setCharacterImage(characterItem.image)
+                setCharacterName(characterUiModel.name)
+                setCharacterImage(characterUiModel.image)
 
                 clickListener = {
                     onItemClicked()
@@ -79,14 +82,14 @@ class CharacterAdapter(private val listener: OnItemClickListener)
             }
         }
 
-        fun onItemClicked() {
+        private fun onItemClicked() {
             val position = bindingAdapterPosition
 
             if (position != RecyclerView.NO_POSITION) {
                 val item = getItem(position)
 
                 if (item != null) {
-                    listener.onItemClick(item)
+                    listener.onItemClick(item.first)
                 }
             }
         }

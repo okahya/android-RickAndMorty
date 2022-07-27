@@ -7,7 +7,7 @@ import androidx.lifecycle.*
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.okahya.rickandmorty.R
-import com.okahya.rickandmorty.base.network.remote.model.Character
+import com.okahya.rickandmorty.scene.data.model.response.Character
 import com.okahya.rickandmorty.base.ui.BaseFragment
 import com.okahya.rickandmorty.databinding.FragmentHomeBinding
 import com.okahya.rickandmorty.scene.ui.home.adapter.CharacterAdapter
@@ -73,8 +73,8 @@ class HomeFragment: BaseFragment<FragmentHomeBinding, HomeViewModel>() {
     }
 
     private suspend fun collectData() {
-        viewModel.getCharacters().collectLatest {
-            characterAdapter.submitData(it)
+        viewModel.getCharacters().collectLatest { pagingData ->
+            characterAdapter.submitData(pagingData)
         }
     }
 

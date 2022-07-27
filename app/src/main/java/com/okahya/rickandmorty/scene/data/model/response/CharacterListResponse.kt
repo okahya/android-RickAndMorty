@@ -1,4 +1,6 @@
-package com.okahya.rickandmorty.base.network.remote.model
+package com.okahya.rickandmorty.scene.data.model.response
+
+import com.okahya.rickandmorty.scene.data.type.Gender
 
 data class CharacterListResponse(
     val info: Info,
@@ -9,9 +11,9 @@ data class Character(
     val id: Int,
     val name: String?,
     val species: String?,
-    val type: String?,
+    val status: String?,
     val image: String?,
-    val url: String?,
+    val gender: Gender?,
     val episode: List<String>?
 )
 

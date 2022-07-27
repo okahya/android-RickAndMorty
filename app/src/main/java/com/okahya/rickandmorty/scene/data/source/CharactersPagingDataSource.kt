@@ -4,7 +4,7 @@ import android.net.Uri
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.okahya.rickandmorty.base.network.remote.service.AppService
-import com.okahya.rickandmorty.base.network.remote.model.Character
+import com.okahya.rickandmorty.scene.data.model.response.Character
 
 class CharactersPagingDataSource (
     private val apiService: AppService

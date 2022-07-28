@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data></data>
+
+    <com.okahya.rickandmorty.base.component.charactercardview.CharacterCardView
+        android:id="@+id/item_character"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_extra_large"
+        android:layout_marginTop="@dimen/margin_large"
+        android:layout_marginEnd="@dimen/margin_extra_large"
+        android:layout_marginBottom="@dimen/margin_small"
+        app:cardCornerRadius="@dimen/radius_small"
+        app:cardElevation="@dimen/no_elevation"/>
+
+</layout>

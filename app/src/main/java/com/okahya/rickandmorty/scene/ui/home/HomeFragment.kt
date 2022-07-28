@@ -2,17 +2,22 @@ package com.okahya.rickandmorty.scene.ui.home
 
 import android.os.Bundle
 import android.view.View
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.*
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.okahya.rickandmorty.R
+import com.okahya.rickandmorty.base.extension.showPopup
 import com.okahya.rickandmorty.scene.data.model.response.Character
 import com.okahya.rickandmorty.base.ui.BaseFragment
+import com.okahya.rickandmorty.base.ui.popup.PopupModel
 import com.okahya.rickandmorty.databinding.FragmentHomeBinding
+import com.okahya.rickandmorty.scene.MainViewModel
 import com.okahya.rickandmorty.scene.ui.home.adapter.CharacterAdapter
 import com.okahya.rickandmorty.scene.ui.home.adapter.FooterAdapter
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
@@ -21,6 +26,8 @@ class HomeFragment: BaseFragment<FragmentHomeBinding, HomeViewModel>() {
 
     override val layoutResourceId: Int = R.layout.fragment_home
     override val viewModel: HomeViewModel by viewModels()
+    private val mainViewModel: MainViewModel by activityViewModels()
+
     private var characterAdapter = CharacterAdapter(object : CharacterAdapter.OnItemClickListener {
         override fun onItemClick(character: Character) {
             onItemClicked(character)
@@ -36,6 +43,11 @@ class HomeFragment: BaseFragment<FragmentHomeBinding, HomeViewModel>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        viewModel.setActivityViewModel(mainViewModel)
+        if (!isStateChanged) {
+            mainViewModel.loading(true)
+        }
+        mainViewModel.toolbar(false)
         initRecyclerView()
         submitData()
     }
@@ -70,12 +82,25 @@ class HomeFragment: BaseFragment<FragmentHomeBinding, HomeViewModel>() {
                 collectData()
             }
         }
+        viewModel.viewModelScope.launch {
+            delay(1000L)
+            mainViewModel.loading(false)
+        }
     }
 
     private suspend fun collectData() {
-        viewModel.getCharacters().collectLatest { pagingData ->
-            characterAdapter.submitData(pagingData)
-        }
+        viewModel.getCharacters()
+            .catch {
+                requireContext().showPopup(
+                    PopupModel(
+                        title = R.string.error,
+                        message = R.string.problem
+                    )
+                )
+            }
+            .collectLatest { pagingData ->
+                characterAdapter.submitData(pagingData)
+            }
     }
 
     private fun checkStateForSubmitData(onCalled: () -> Unit) {

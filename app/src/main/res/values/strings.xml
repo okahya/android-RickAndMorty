@@ -3,4 +3,6 @@
     <string name="retry">Retry</string>
     <string name="results_could_not_be_loaded">Results could not be loaded</string>
     <string name="episode">Episodes</string>
+    <string name="problem">Some problem occured</string>
+    <string name="error">Error</string>
 </resources>

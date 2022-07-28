@@ -9,6 +9,9 @@ import com.okahya.rickandmorty.base.network.remote.repository.BaseRepository
 import com.okahya.rickandmorty.scene.data.source.CharactersPagingDataSource
 import kotlinx.coroutines.flow.Flow
 import com.okahya.rickandmorty.scene.data.model.response.Character
+import com.okahya.rickandmorty.scene.domain.GetEpisodeInformationUseCase.EpisodeInformationRequest
+import com.okahya.rickandmorty.scene.ui.detail.uimodel.EpisodeUiModel
+import kotlinx.coroutines.flow.flow
 
 class MainRepository @Inject constructor(
     private val service: AppService,
@@ -21,6 +24,18 @@ class MainRepository @Inject constructor(
             ),
             pagingSourceFactory = {CharactersPagingDataSource(service) }
         ).flow
+    }
+
+    fun getEpisodeInformation(episodeNumber: EpisodeInformationRequest): Flow<EpisodeUiModel> = flow {
+        val result: MutableList<String> = mutableListOf()
+
+        for (item in episodeNumber.episodeNumbers) {
+            with(service.getEpisodeInformation(item)) {
+                result.add("$name - $episode")
+            }
+        }
+
+        emit(EpisodeUiModel(result))
     }
 
     companion object {
